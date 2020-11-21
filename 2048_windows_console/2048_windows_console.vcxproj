@@ -139,21 +139,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="2048_game.c" />
-    <ClCompile Include="get_ikey.c" />
-    <ClCompile Include="glb_input.c" />
-    <ClCompile Include="gotoxy.c" />
-    <ClCompile Include="inter_face.c" />
-    <ClCompile Include="main.c" />
-    <ClCompile Include="user.c" />
+    <ClCompile Include="Sourse\2048_game.c" />
+    <ClCompile Include="Sourse\get_ikey.c" />
+    <ClCompile Include="Sourse\glb_input.c" />
+    <ClCompile Include="Sourse\gotoxy.c" />
+    <ClCompile Include="Sourse\inter_face.c" />
+    <ClCompile Include="Sourse\main.c" />
+    <ClCompile Include="Sourse\user.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="2048_game.h" />
-    <ClInclude Include="get_ikey.h" />
-    <ClInclude Include="glb_input.h" />
-    <ClInclude Include="gotoxy.h" />
-    <ClInclude Include="inter_face.h" />
-    <ClInclude Include="user.h" />
+    <ClInclude Include="Sourse\2048_game.h" />
+    <ClInclude Include="Sourse\get_ikey.h" />
+    <ClInclude Include="Sourse\glb_input.h" />
+    <ClInclude Include="Sourse\gotoxy.h" />
+    <ClInclude Include="Sourse\inter_face.h" />
+    <ClInclude Include="Sourse\user.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
