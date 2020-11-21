@@ -22,9 +22,9 @@ void login_game(STU_T user[]);
 /*
  存储用户信息
 */
-int saveUser(STU_T* user);
-int loadUser(STU_T* user);
-int showUser(STU_T* user);
+int saveUser(STU_T *user);
+int loadUser(STU_T *user);
+int showUser(STU_T *user);
 int regist_user(STU_T user[]);
 int option_choose();              //上下选择，返回i=0，1，2
 

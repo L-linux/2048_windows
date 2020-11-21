@@ -13,6 +13,6 @@
  的字符长度,  其他数指输入密文且必须输满设置的字符长度 */
 int glb_putString(char acStr[], int iMaxLen, int iPutType, int isPlaintext);
 
-	
+
 
 #endif
