@@ -321,3 +321,7 @@ void game()
 		add_rand(a);
 	}
 }
+
+void add_arr(int a[4][4])
+{
+}

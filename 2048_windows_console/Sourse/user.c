@@ -66,11 +66,62 @@ void login_game(STU_T user[])
 				{
 					break;
 				}
-
 			}
 		}	
 	}
 }
+
+int saveUser(STU_T *user) {
+	FILE* user_file;
+	int ret = fopen_s(&user_file,USERINFO_FILE, "ab+");
+	if (user_file == NULL)
+	{
+		gotoxy(8, 21);
+		perror("open file failed\n");
+		return FALSE;
+	}
+	int i = 0;
+	int write_size = fwrite((void *)user,sizeof(STU_T),1,user_file);
+	fclose(user_file);
+	return TRUE;
+}
+
+int loadUser(STU_T *user)
+{
+	FILE* user_file;
+	int ret = fopen_s(&user_file, USERINFO_FILE, "rb+");
+	if (user_file == NULL)
+	{
+		gotoxy(8, 21);
+		perror("open file failed\n");
+		return FALSE;
+	}
+	STU_T tmp_user = { 0 };
+	int i = 0;
+	while (i < USER_NUM_MAX) {
+		if (user[i].id != 0) {
+			++i;
+			continue;
+		}
+		int read_size = fread_s(&tmp_user, sizeof(tmp_user), sizeof(tmp_user), 1, user_file);
+		if (read_size == 0)
+		{
+			break;
+		}
+		user[i] = tmp_user;
+		memset(&tmp_user, 0, sizeof(tmp_user));
+		++i;
+	}
+	fclose(user_file);
+	return TRUE;
+}
+
+int showUser(STU_T* user)
+{
+
+	return 0;
+}
+
 int regist_user(STU_T user[])
 {
 	int i=0,j=0,k=0,count=0;
@@ -79,7 +130,7 @@ int regist_user(STU_T user[])
     char pwd2[10]={0};
 	regist_face();
 	gotoxy(35,6);
-	while(i<10)
+	while(i < USER_NUM_MAX)
 	{
 		if(user[i].id==0)
 		{
@@ -87,10 +138,9 @@ int regist_user(STU_T user[])
 			i++;
 			break;
 		}
-		else
-			i++;
+		i++;
 	}
-	while(1)
+	while(i < USER_NUM_MAX)
 	{
 		gotoxy(45,9);
 		printf("输入1~9个字母或数字且不能为空");
@@ -122,7 +172,7 @@ int regist_user(STU_T user[])
 	}
 	gotoxy(45,9);	
 	printf("                             ");
-	while(1)
+	while(i < USER_NUM_MAX)
 	{
 		gotoxy(45,12);
 		printf("输入6位纯数字");
@@ -149,6 +199,7 @@ int regist_user(STU_T user[])
 			user[i].id=1001+i;
 			memcpy(user[i].name, name, sizeof(name));
 			memcpy(user[i].pwd, pwd2, sizeof(pwd2));
+			saveUser(&user[i]);
 			gotoxy(45,16);
 			printf("注册成功");
 			gotoxy(64,18);
@@ -176,6 +227,7 @@ int regist_user(STU_T user[])
 		}
 	}
 }
+
 int option_choose()
 {
 	int i = 0;

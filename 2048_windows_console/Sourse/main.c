@@ -5,7 +5,8 @@
 
 int main()
 {
-	STU_T user[10]={{1001,"admin","123456"},{1002,"rose","123456"}};
+	STU_T user[USER_NUM_MAX]={{1001,"admin","123456"}};
+	loadUser(user);
 	int i=0,j=0;
 	while(1)
 	{
